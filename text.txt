@@ -1,1 +1,1 @@
-test script
+test scripts
