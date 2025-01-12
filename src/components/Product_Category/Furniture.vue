@@ -2,18 +2,17 @@
   <div class="Furnitures">
     <div class="product-grid">
       <ProductBrowse
-      v-for="product in furnitures"
+        v-for="product in furnitures"
         :key="product.id"
         :product="product"
       />
     </div>
-
   </div>
 </template>
 
 <script>
-import { useBrowseStore } from "@/store/browsestore";
-import ProductBrowse from "@/components/ProductBrowse.vue";
+import { useBrowseStore } from '@/store/browsestore'
+import ProductBrowse from '@/components/Product_Category/ProductBrowse.vue'
 
 export default {
   components: { ProductBrowse },
@@ -38,4 +37,3 @@ export default {
   margin-top: 20px;
 }
 </style>
-
