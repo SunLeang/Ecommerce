@@ -4,7 +4,7 @@ import Browse from '@/views/Browse.vue'
 import Product from '@/views/Product.vue'
 import Checkout from '@/views/CheckoutPage.vue'
 import Register from '@/views/Register.vue'
-import Cart from '@/views/Cart.vue'
+import Cart from '@/views/Cart_old.vue'
 import Wishlist from '@/views/Wishlist.vue'
 import Login from '@/views/Login.vue'
 import MainLayout from '@/views/MainLayout.vue'
@@ -25,48 +25,46 @@ const routes = [
   },
   {
     path: '/',
-    name: 'home',
-    component: MainLayout,
+    component: MainLayout, // MainLayout serves as the parent layout
     meta: { requiresAuth: true },
     children: [
       {
-        path: '/',
-        component: Home,
+        path: '', // Default child for "/"
+        name: 'home',
+        component: Home, // Render the HomePage component
       },
       {
-        path: '/browse',
+        path: 'browse',
         name: 'browse',
         component: Browse,
       },
       {
-        path: '/product/:id',
-        name: 'Product',
+        path: 'product/:category/:id',
+        name: 'product',
         component: Product,
-        props: true // Enables dynamic props for product details
+        props: true, // Enable dynamic props
       },
       {
-        path: '/checkout',
+        path: 'checkout',
         name: 'checkout',
         component: Checkout,
       },
       {
-        path: '/cart',
+        path: 'cart',
         name: 'cart',
         component: Cart,
       },
       {
-        path: '/wishlist',
+        path: 'wishlist',
         name: 'wishlist',
         component: Wishlist,
       },
-
       {
-        path: '/browse/:category',
+        path: 'browse/:category',
         component: Browse,
       },
     ],
   },
-
   {
     path: '/browse',
     redirect: '/browse/walldecor',
@@ -94,7 +92,6 @@ router.beforeEach((to, from, next) => {
     next({
       // redirect to home if logged in and trying to access login or register
       name: 'home',
-      path: '/',
     })
   } else {
     next()

@@ -10,8 +10,10 @@
         v-for="star in 5"
         :key="star"
         :class="{
-          'filled': star <= Math.floor(product.rating),
-          'half': star === Math.ceil(product.rating) && !Number.isInteger(product.rating),
+          filled: star <= Math.floor(product.rating),
+          half:
+            star === Math.ceil(product.rating) &&
+            !Number.isInteger(product.rating),
         }"
         class="star"
       >
@@ -30,7 +32,21 @@ export default {
   },
   methods: {
     navigateToProduct() {
-      this.$router.push(`/product/${this.product.id}`);
+      
+      let categoryRoute = '';
+      if (this.product.category === 'Wall Decor') {
+        categoryRoute = 'wall-decor';
+      } else if (this.product.category === 'Lamps') {
+        categoryRoute = 'lamp';
+      } else if (this.product.category === 'Furnitures') {
+        categoryRoute = 'furniture';
+      }
+
+      if (categoryRoute) {
+        this.$router.push(`/product/${categoryRoute}/${this.product.id}`);
+      } else {
+        console.error('Unknown category:', this.product.category);
+      }
     },
   },
 };
@@ -76,7 +92,7 @@ export default {
   color: #ddd;
 }
 .star.half::before {
-  content: "★";
+  content: '★';
   color: #212529;
   position: absolute;
   left: 0;

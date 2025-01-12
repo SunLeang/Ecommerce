@@ -36,7 +36,7 @@
     <div class="flex w-10 h-5 gap-1 t4">
       <Icon icon="logos:visaelectron" class="bg-white" />
       <Icon icon="logos:visaelectron" />
-      <img src="../assets/images/khqr.png" alt="icon" />
+      <img src="../assets/images/khqr.png" alt="icon" class="h-[75%]" />
     </div>
   </footer>
 
@@ -44,7 +44,7 @@
     class="bg-[#0D0D0D] text-white flex justify-between items-center px-16 py-4"
   >
     <div class="b1 inline-flex flex-row">
-      <div class="w-fit">© Copyright 2024 all rights reserved.</div>
+      <div class="w-fit">© Copyright 2025 all rights reserved.</div>
     </div>
 
     <div class="b2 flex gap-5">

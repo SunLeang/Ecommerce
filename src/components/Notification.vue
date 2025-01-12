@@ -6,7 +6,7 @@
       class="flex text-3xl font-bold text-gray-600 pt-5 pb-5 justify-between"
     >
       <div>Notifications</div>
-      <button @click="productStore.clickNotification">X</button>
+      <button @click="closeNotification">X</button>
     </div>
     <hr />
 
@@ -16,9 +16,9 @@
     </div>
     <div class="text-gray-400">Come and check our last arrival</div>
 
-    <RouterLink to="/browse/walldecor" class="button">
-      <button>Painting</button>
-    </RouterLink>
+    <button @click="handleButtonClick('/browse/walldecor')" class="button">
+      Painting
+    </button>
 
     <hr />
 
@@ -31,25 +31,41 @@
     </div>
 
     <div class="flex justify-center">
-      <RouterLink to="/browse/walldecor" class="button w-full">
-        <button>Wall Decor</button>
-      </RouterLink>
-      <RouterLink to="/browse/walldecor" class="button w-full">
-        <button>Furniture</button>
-      </RouterLink>
+      <button @click="handleButtonClick('/browse/walldecor')" class="button w-full">
+        Wall Decor
+      </button>
+      <button @click="handleButtonClick('/browse/furnitures')" class="button w-full">
+        Furniture
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 import { useProductStore } from '@/store'
+import { useRouter } from 'vue-router'
 
 export default {
   setup() {
     const productStore = useProductStore()
+    const router = useRouter()
+
+    const closeNotification = () => {
+      productStore.clickNotification()
+    }
+
+    const handleButtonClick = (route) => {
+      // Close the notification first
+      closeNotification()
+
+      // Navigate to the new route
+      router.push(route)
+    }
 
     return {
       productStore,
+      closeNotification,
+      handleButtonClick,
     }
   },
 }
@@ -64,5 +80,6 @@ export default {
   margin: 10px;
   border-radius: 5px;
   text-align: center;
+  cursor: pointer;
 }
 </style>
