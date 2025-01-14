@@ -7,7 +7,7 @@
         <!-- Left Navigation -->
         <div class="flex items-center space-x-8">
           <RouterLink
-            to="/browse/walldecor"
+            to="/browse/wall-decor"
             class="text-gray-800 hover:text-gray-600 w-[95px]"
             >WALL DECOR</RouterLink
           >
@@ -17,7 +17,7 @@
             >LAMPS</RouterLink
           >
           <RouterLink
-            to="/browse/furnitures"
+            to="/browse/furniture"
             class="text-gray-800 hover:text-gray-600"
             >FURNITURES</RouterLink
           >
@@ -34,6 +34,8 @@
             <input
               type="search"
               placeholder="Search"
+              v-model="searchQuery"
+              @input="handleSearch"
               class="pl-3 pr-10 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
           </div>
@@ -79,6 +81,20 @@ export default {
       productStore,
       handleLogout,
     }
+  },
+  data() {
+    return {
+      searchQuery: '',
+    }
+  },
+  methods: {
+    handleSearch() {
+      if (this.searchQuery) {
+        this.$router.push({ path: '/browse', query: { search: this.searchQuery } })
+      } else {
+        this.$router.push({ path: '/browse' })
+      }
+    },
   },
 }
 </script>

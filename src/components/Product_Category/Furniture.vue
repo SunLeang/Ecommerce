@@ -7,12 +7,15 @@
         :product="product"
       />
     </div>
+
   </div>
 </template>
 
 <script>
+
 import { useBrowseStore } from '@/store/browsestore'
 import ProductBrowse from '@/components/Product_Category/ProductBrowse.vue'
+
 
 export default {
   components: { ProductBrowse },
